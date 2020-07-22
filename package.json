@@ -1,0 +1,24 @@
+{
+  "name": "fitness-admin-panel",
+  "version": "1.0.0",
+  "description": "Fitness admin panel implementation based on https://dribbble.com/shots/10173522-Fitness-admin-panel",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ozcanzaferayan/fitness-admin-panel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ozcanzaferayan/fitness-admin-panel/issues"
+  },
+  "homepage": "https://github.com/ozcanzaferayan/fitness-admin-panel#readme",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-favicons": "^2.4.0"
+  }
+}
