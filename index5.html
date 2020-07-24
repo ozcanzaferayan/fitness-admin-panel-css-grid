@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <style>
+         :root {
+            --admin-header-height: 70px;
+            --admin-footer-height: 70px;
+            --admin-nav-width: 250px;
+            --spacing: 2rem;
+            --spacing-xs: 1em;
+            --spacing-xxs: .5em;
+            --spacing-xxxs: .3em;
+            --dashboard-column-count: 2;
+            /* Colors */
+            --primary: #4050f5;
+            --gray: #9c9eb2;
+            --gray-lighter: #9c9eb266;
+            --gray-lightest: #9c9eb233;
+            --text: #1d256f;
+        }
+        
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+        
+        body {
+            height: 100%;
+            overflow-x: hidden;
+            margin: 0;
+            font-family: 'Open Sans', Helvetica, sans-serif;
+            color: var(--text);
+        }
+        
+        input {
+            font-family: 'Open Sans', Helvetica, sans-serif;
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        textarea:focus,
+        input:focus {
+            outline: none;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .admin {
+            display: grid;
+            height: 100vh;
+            grid-template-rows: var(--admin-header-height) 1fr var(--admin-footer-height);
+            grid-template-columns: var(--admin-nav-width) 1fr;
+            grid-template-areas: "header header" "nav main" "footer footer";
+        }
+        
+        .admin__header {
+            grid-area: header;
+            background-color: #fff;
+            box-shadow: 0 2px 8px -2px var(--gray-lighter);
+            z-index: 1;
+        }
+        
+        .admin__aside {
+            grid-area: nav;
+            background-color: #fff;
+            border-right: 1px solid var(--gray-lighter);
+        }
+        
+        .admin__main {
+            grid-area: main;
+            padding: var(--spacing);
+            background-color: #f4f7fa;
+        }
+        
+        .admin__footer {
+            grid-area: footer;
+            background-color: #1d2127;
+        }
+        
+        .admin__header {
+            grid-area: header;
+            background-color: #fff;
+            display: grid;
+            grid: auto / var(--admin-nav-width) 1fr;
+            grid-template-areas: "logo navContainer";
+        }
+        
+        .logo {
+            display: grid;
+            grid-template-columns: min-content 1fr;
+            align-items: center;
+            padding: var(--spacing-xs);
+            gap: var(--spacing-xs);
+            font-weight: 600;
+        }
+        
+        .logo img {
+            width: 40px;
+        }
+        
+        .navContainer {
+            display: grid;
+            grid-template-areas: "search link link link link userContainer";
+            grid: auto / 1fr min-content min-content min-content min-content 1fr;
+            align-content: center;
+            gap: var(--spacing);
+            align-items: center;
+        }
+        
+        .search {
+            color: var(--gray);
+            font-size: 1.25rem;
+            display: grid;
+            grid-template-columns: min-content 1fr;
+            gap: var(--spacing-xxs);
+            padding: var(--spacing-xs);
+            align-items: center;
+        }
+        
+        .search input {
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .search span {
+            font-size: 1.25rem;
+        }
+        
+        .navContainer .link {
+            color: var(--gray);
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-bottom: 3px solid transparent;
+            padding: 1.2em;
+        }
+        
+        .navContainer .link.active {
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .userContainer {
+            justify-content: end;
+            display: grid;
+            grid-template-areas: "notifications user";
+            padding: var(--spacing-xs);
+            gap: var(--spacing);
+            align-items: center;
+        }
+        
+        .notifications {
+            color: var(--gray);
+            font-size: 1.25rem;
+            display: flex;
+        }
+        
+        .notifications i::after {
+            --size: .45em;
+            content: '';
+            background-color: var(--primary);
+            width: var(--size);
+            height: var(--size);
+            border-radius: var(--size);
+            position: absolute;
+            margin-left: calc(-1*var(--size));
+        }
+        
+        .userContainer .user {
+            display: grid;
+            grid-template-areas: "img name caret";
+            gap: var(--spacing-xs);
+            align-items: center;
+        }
+        
+        .userContainer .user .img {
+            --size: 2.5em;
+            width: var(--size);
+            height: var(--size);
+            border-radius: var(--size);
+            background-image: url('./img/user.jpeg');
+            background-size: cover;
+            border: .05em solid #fff;
+            box-shadow: 0 0 0 .1em var(--gray-lighter);
+        }
+        
+        .userContainer .user .name {
+            font-size: .8rem;
+            font-weight: 600;
+        }
+        
+        .userContainer .user .caret {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+        
+        .admin__aside {
+            display: grid;
+            grid-template-rows: min-content min-content min-content min-content;
+            gap: var(--spacing);
+            padding: var(--spacing) var(--spacing-xs);
+        }
+        
+        .admin__aside .tabContainer {
+            padding: 0 var(--spacing-xs);
+            display: grid;
+            gap: var(--spacing-xxs);
+            font-size: .9rem;
+        }
+        
+        .admin__aside .tabButton {
+            background: none;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            width: 100%;
+            user-select: none;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: var(--spacing-xxs);
+        }
+        
+        .admin__aside .tabButtonBorder {
+            content: '';
+            border-bottom: .1em solid var(--gray-lightest);
+            width: 100%;
+        }
+        
+        .admin__aside .tabButton .caret {
+            color: var(--gray);
+            font-size: .9rem;
+        }
+        
+        .admin__aside .panel {
+            transition: max-height 0.2s ease-out;
+        }
+        
+        .admin__aside .panel ul {
+            display: grid;
+            gap: var(--spacing-xxxs);
+        }
+        
+        .admin__aside .panel input[type=checkbox] {
+            margin-right: var(--spacing-xxs);
+            border: 1px solid var(--gray-lighter);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin">
+        <header class="admin__header">
+            <div class="logo"><img src="./img/logo.png" />
+                <span>Urban GYM</span></div>
+            <nav class="navContainer">
+                <div class="search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search..." />
+                </div>
+                <a class="link active" href="#">Dashboard</a>
+                <a class="link" href="#">Schedule</a>
+                <a class="link" href="#">Trainers</a>
+                <a class="link" href="#">Customers</a>
+                <div class="userContainer">
+                    <div class="notifications">
+                        <i class="far fa-bell"></i>
+                    </div>
+                    <div class="user">
+                        <div class="img"></div>
+                        <span class="name">Lena Kaziynian</span>
+                        <i class="caret fas fa-angle-down"></i>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <aside class="admin__aside">
+            <div class="tabContainer">
+                <div class="tabButton"><span>Location</span><i class="caret fas fa-angle-up"></i></div>
+                <div class="tabButtonBorder"></div>
+                <div class="panel">
+                    <ul>
+                        <li><input type="checkbox" /><span>İstanbul</span> </li>
+                        <li><input type="checkbox" /><span>Ankara</span> </li>
+                        <li><input type="checkbox" /><span>İzmir</span> </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tabContainer">
+                <div class="tabButton"><span>Type of skills</span><i class="caret fas fa-angle-up"></i></div>
+                <div class="tabButtonBorder"></div>
+                <div class="panel">
+                    <ul>
+                        <li><input type="checkbox" /><span>İstanbul</span> </li>
+                        <li><input type="checkbox" /><span>Ankara</span> </li>
+                        <li><input type="checkbox" /><span>İzmir</span> </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tabContainer">
+                <div class="tabButton"><span>By reviews</span><i class="caret fas fa-angle-up"></i></div>
+                <div class="tabButtonBorder"></div>
+                <div class="panel">
+                    <ul>
+                        <li><input type="checkbox" /><span>İstanbul</span> </li>
+                        <li><input type="checkbox" /><span>Ankara</span> </li>
+                        <li><input type="checkbox" /><span>İzmir</span> </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tabContainer">
+                <div class="tabButton"><span>Customer base</span><i class="caret fas fa-angle-up"></i></div>
+                <div class="tabButtonBorder"></div>
+                <div class="panel">
+                    <ul>
+                        <li><input type="checkbox" /><span>İstanbul</span> </li>
+                        <li><input type="checkbox" /><span>Ankara</span> </li>
+                        <li><input type="checkbox" /><span>İzmir</span> </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+        <main class="admin__main">
+            <div class="dashboard">
+                <div class="dashboard__item dashboard__item--full">
+                    <div class="card">
+                    </div>
+                </div>
+                <div class="dashboard__item dashboard__item--full">
+                    <div class="card">
+                    </div>
+                </div>
+                <div class="dashboard__item dashboard__item--full">
+                    <div class="card"></div>
+                </div>
+                <div class="dashboard__item dashboard__item--col">
+                    <div class="card"></div>
+                </div>
+                <div class="dashboard__item dashboard__item--col">
+                    <div class="card"></div>
+                </div>
+                <div class="dashboard__item dashboard__item--col">
+                    <div class="card"></div>
+                </div>
+                <div class="dashboard__item dashboard__item--col">
+                    <div class="card"></div>
+                </div>
+            </div>
+        </main>
+        <footer class="admin__footer">
+        </footer>
+    </div>
+    <script>
+        var acc = document.getElementsByClassName("tabButton");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function(e) {
+                var target = e.target;
+                var panel = target.parentElement.getElementsByClassName('panel')[0]
+                console.log(panel);
+                panel.style.height = null;
+                console.log(target);
+            });
+        }
+    </script>
+</body>
+
+</html>
