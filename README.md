@@ -1,6 +1,6 @@
 # Fitness Admin Panel
 
-Fitness admin panel implementation based on https://dribbble.com/shots/10173522-Fitness-admin-panel
+Fitness admin panel CSS Grid implementation based on https://dribbble.com/shots/10173522-Fitness-admin-panel
 
 ## Social media preview
 
