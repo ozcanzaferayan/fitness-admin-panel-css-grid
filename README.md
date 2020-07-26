@@ -4,14 +4,14 @@ Fitness admin panel CSS Grid implementation based on https://dribbble.com/shots/
 
 ## Social media preview
 
-![Social media preview](https://raw.githubusercontent.com/ozcanzaferayan/fitness-admin-panel/master/art/social/social.png)
+![Social media preview](https://raw.githubusercontent.com/ozcanzaferayan/fitness-admin-panel-css-grid/master/art/social/social.png)
 
 ## Screenshots
 
 ### Desktop UI
 
-![Screenshot](https://raw.githubusercontent.com/ozcanzaferayan/fitness-admin-panel/master/art/screenshots/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/ozcanzaferayan/fitness-admin-panel-css-grid/master/art/screenshots/screenshot.png)
 
 ### Mobile UI
 
-![Screenshot](https://raw.githubusercontent.com/ozcanzaferayan/fitness-admin-panel/master/art/screenshots/screenshot2.png)
+![Screenshot](https://raw.githubusercontent.com/ozcanzaferayan/fitness-admin-panel-css-grid/master/art/screenshots/screenshot2.jpg)
