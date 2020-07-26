@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitness Admin Panel</title>
+    <title>Urban GYM</title>
     <!-- Favicons -->
     <!-- #region -->
     <link rel="shortcut icon" href="img/favicon/favicon.ico">
@@ -60,41 +60,566 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-
     <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
-    <div class="grid-container">
-        <header class="header"></header>
-        <aside class="sidenav"></aside>
-        <main class="main">
-            <div class="main-grid-container">
-                <div class="upgradeMessage"></div>
-                <div class="resultsHeader">
-                    <span>Found 6 trainers</span>
-                    <div class="toggleListDisplay">
-                        <a>
-                            <i class="fas fa-grip-horizontal"></i>
-                        </a>
-                        <a>
-                            <i class="fas fa-grip-vertical"></i>
-                        </a>
+    <div class="admin">
+        <header class="admin__header">
+            <div class="logo"><img src="./img/logo.png" />
+                <span>Urban GYM</span></div>
+            <nav class="navContainer">
+                <div class="search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search..." />
+                </div>
+                <a class="link active" href="#">Dashboard</a>
+                <a class="link" href="#">Schedule</a>
+                <a class="link" href="#">Trainers</a>
+                <a class="link" href="#">Customers</a>
+                <div class="userContainer">
+                    <div class="notifications">
+                        <i class="far fa-bell"></i>
+                    </div>
+                    <div class="user">
+                        <div class="img"></div>
+                        <span class="name">Lena Kaziynian</span>
+                        <i class="caret fas fa-angle-down"></i>
                     </div>
                 </div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
+            </nav>
+        </header>
+        <aside class="admin__aside">
+            <div class="tabContainer">
+                <div class="tabButton"><span>Location</span><i class="caret fas fa-angle-up"></i></div>
+                <div class="tabButtonBorder"></div>
+                <div class="panel">
+                    <ul>
+                        <li><input type="checkbox" /><span>İstanbul</span> </li>
+                        <li><input type="checkbox" /><span>Ankara</span> </li>
+                        <li><input type="checkbox" /><span>İzmir</span> </li>
+                        <li><input type="checkbox" /><span>Balıkesir</span> </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tabContainer">
+                <div class="tabButton"><span>Type of skills</span><i class="caret fas fa-angle-up"></i></div>
+                <div class="tabButtonBorder"></div>
+                <div class="panel">
+                    <ul>
+                        <li><input type="checkbox" /><span>Crossfit</span> </li>
+                        <li><input type="checkbox" /><span>TRX</span> </li>
+                        <li><input type="checkbox" /><span>Yoga</span> </li>
+                        <li><input type="checkbox" /><span>Box</span> </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tabContainer">
+                <div class="tabButton"><span>By reviews</span><i class="caret fas fa-angle-up"></i></div>
+                <div class="tabButtonBorder"></div>
+                <div class="panel">
+                    <ul>
+                        <li>
+                            <input type="radio" name="star" checked /><span>
+                            <i class="fa fa-star active"></i>
+                            <i class="fa fa-star active"></i>
+                            <i class="fa fa-star active"></i>
+                            <i class="fa fa-star active"></i>
+                            <i class="fa fa-star"></i> & Up</span>
+                        </li>
+                        <li>
+                            <input type="radio" name="star" /><span>
+                            <i class="fa fa-star active"></i>
+                            <i class="fa fa-star active"></i>
+                            <i class="fa fa-star active"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i> & Up</span>
+                        </li>
+                        <li>
+                            <input type="radio" name="star" /><span>
+                            <i class="fa fa-star active"></i>
+                            <i class="fa fa-star active"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i> & Up</span>
+                        </li>
+                        <li>
+                            <input type="radio" name="star" /><span>
+                            <i class="fa fa-star active"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i> & Up</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tabContainer">
+                <div class="tabButton"><span>Customer base</span><i class="caret fas fa-angle-up"></i></div>
+                <div class="tabButtonBorder"></div>
+                <div class="panel">
+                    <ul>
+                        <li><input type="checkbox" /><span>İstanbul</span> </li>
+                        <li><input type="checkbox" /><span>Ankara</span> </li>
+                        <li><input type="checkbox" /><span>İzmir</span> </li>
+                        <li><input type="checkbox" /><span>Balıkesir</span> </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+        <main class="admin__main">
+            <div class="upgradeAccount">
+                <img class="person girl" src="./img/girl.png" alt="">
+                <span class="upgradeAccount__text__header">Looking for some upgrades?</span>
+                <span class="upgradeAccount__text__description">Make whole management even more effective and enjoyable. Upgrade your profile to use the service to the best advantage. Let us help you enjoy more of what you do.</span>
+                <div class="upgradeAccount__text__button">
+                    <img class="effect-before" src="./img/buttonEffect.png" alt="">
+                    <a href="#">Upgrade Account</a>
+                    <img class="effect-after" src="./img/buttonEffect.png" alt="">
+                </div>
+                <img class="person boy" src="./img/boy.png" alt="">
+                <div id="closeAlert" class="close">
+                    <a href="#"><i class="fa fa-times"></i></a></div>
+            </div>
+            <div class="searchResultsHeader">
+                <span>Found 6 trainers</span>
+                <div class="layoutContainer">
+                    <a class="table active" href="#"><i class="fas fa-table"></i></a>
+                    <a class="list" href="#"><i class="fas fa-list"></i></a>
+                </div>
+            </div>
+            <div class="searchResults">
+                <div class="card">
+                    <div class="user">
+                        <div class="img"></div>
+                        <div class="nameAndStars">
+                            <div class="name">Jane Anderson</div>
+                            <div class="stars">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="options">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </div>
+                    <div class="skills">
+                        <span class="header">Skills</span>
+                        <div class="skillsContainer">
+                            <a href="#" class="skill">Crossfit</a>
+                            <a href="#" class="skill">TRX</a>
+                            <a href="#" class="skill">Yoga</a>
+                        </div>
+                    </div>
+                    <hr class="seperator" />
+                    <div class="customers">
+                        <span class="header">Customers</span>
+                        <div class="customersContainer">
+                            <img src="https://i.pravatar.cc/50?img=1" />
+                            <img src="https://i.pravatar.cc/50?img=2" />
+                            <img src="https://i.pravatar.cc/50?img=3" />
+                            <img src="https://i.pravatar.cc/50?img=4" />
+                            <img src="https://i.pravatar.cc/50?img=5" />
+                        </div>
+
+                    </div>
+                    <hr class="seperator" />
+                    <div class="activity">
+                        <div class="headerContainer">
+                            <span class="header">Activity</span>
+                            <select>
+                                <option value="Today">Today</option>
+                                <option value="Tomorrow">Tomorrow</option>
+                                <option value="Toyota">Toyota</option>
+                            </select>
+                        </div>
+                        <div class="chartContainer">
+                            <canvas id="activityChart1"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="user">
+                        <div class="img"></div>
+                        <div class="nameAndStars">
+                            <div class="name">Jane Anderson</div>
+                            <div class="stars">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="options">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </div>
+                    <div class="skills">
+                        <span class="header">Skills</span>
+                        <div class="skillsContainer">
+                            <a href="#" class="skill">Crossfit</a>
+                            <a href="#" class="skill">TRX</a>
+                            <a href="#" class="skill">Yoga</a>
+                        </div>
+                    </div>
+                    <hr class="seperator" />
+                    <div class="customers">
+                        <span class="header">Customers</span>
+                        <div class="customersContainer">
+                            <img src="https://i.pravatar.cc/50?img=1" />
+                            <img src="https://i.pravatar.cc/50?img=2" />
+                            <img src="https://i.pravatar.cc/50?img=3" />
+                            <img src="https://i.pravatar.cc/50?img=4" />
+                            <img src="https://i.pravatar.cc/50?img=5" />
+                        </div>
+
+                    </div>
+                    <hr class="seperator" />
+                    <div class="activity">
+                        <div class="headerContainer">
+                            <span class="header">Activity</span>
+                            <select>
+                                <option value="Today">Today</option>
+                                <option value="Tomorrow">Tomorrow</option>
+                                <option value="Toyota">Toyota</option>
+                            </select>
+                        </div>
+                        <div class="chartContainer">
+                            <canvas id="activityChart2"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="user">
+                        <div class="img"></div>
+                        <div class="nameAndStars">
+                            <div class="name">Jane Anderson</div>
+                            <div class="stars">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="options">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </div>
+                    <div class="skills">
+                        <span class="header">Skills</span>
+                        <div class="skillsContainer">
+                            <a href="#" class="skill">Crossfit</a>
+                            <a href="#" class="skill">TRX</a>
+                            <a href="#" class="skill">Yoga</a>
+                        </div>
+                    </div>
+                    <hr class="seperator" />
+                    <div class="customers">
+                        <span class="header">Customers</span>
+                        <div class="customersContainer">
+                            <img src="https://i.pravatar.cc/50?img=1" />
+                            <img src="https://i.pravatar.cc/50?img=2" />
+                            <img src="https://i.pravatar.cc/50?img=3" />
+                            <img src="https://i.pravatar.cc/50?img=4" />
+                            <img src="https://i.pravatar.cc/50?img=5" />
+                        </div>
+
+                    </div>
+                    <hr class="seperator" />
+                    <div class="activity">
+                        <div class="headerContainer">
+                            <span class="header">Activity</span>
+                            <select>
+                                <option value="Today">Today</option>
+                                <option value="Tomorrow">Tomorrow</option>
+                                <option value="Toyota">Toyota</option>
+                            </select>
+                        </div>
+                        <div class="chartContainer">
+                            <canvas id="activityChart3"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="user">
+                        <div class="img"></div>
+                        <div class="nameAndStars">
+                            <div class="name">Jane Anderson</div>
+                            <div class="stars">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="options">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </div>
+                    <div class="skills">
+                        <span class="header">Skills</span>
+                        <div class="skillsContainer">
+                            <a href="#" class="skill">Crossfit</a>
+                            <a href="#" class="skill">TRX</a>
+                            <a href="#" class="skill">Yoga</a>
+                        </div>
+                    </div>
+                    <hr class="seperator" />
+                    <div class="customers">
+                        <span class="header">Customers</span>
+                        <div class="customersContainer">
+                            <img src="https://i.pravatar.cc/50?img=1" />
+                            <img src="https://i.pravatar.cc/50?img=2" />
+                            <img src="https://i.pravatar.cc/50?img=3" />
+                            <img src="https://i.pravatar.cc/50?img=4" />
+                            <img src="https://i.pravatar.cc/50?img=5" />
+                        </div>
+
+                    </div>
+                    <hr class="seperator" />
+                    <div class="activity">
+                        <div class="headerContainer">
+                            <span class="header">Activity</span>
+                            <select>
+                                <option value="Today">Today</option>
+                                <option value="Tomorrow">Tomorrow</option>
+                                <option value="Toyota">Toyota</option>
+                            </select>
+                        </div>
+                        <div class="chartContainer">
+                            <canvas id="activityChart4"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="user">
+                        <div class="img"></div>
+                        <div class="nameAndStars">
+                            <div class="name">Jane Anderson</div>
+                            <div class="stars">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="options">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </div>
+                    <div class="skills">
+                        <span class="header">Skills</span>
+                        <div class="skillsContainer">
+                            <a href="#" class="skill">Crossfit</a>
+                            <a href="#" class="skill">TRX</a>
+                            <a href="#" class="skill">Yoga</a>
+                        </div>
+                    </div>
+                    <hr class="seperator" />
+                    <div class="customers">
+                        <span class="header">Customers</span>
+                        <div class="customersContainer">
+                            <img src="https://i.pravatar.cc/50?img=1" />
+                            <img src="https://i.pravatar.cc/50?img=2" />
+                            <img src="https://i.pravatar.cc/50?img=3" />
+                            <img src="https://i.pravatar.cc/50?img=4" />
+                            <img src="https://i.pravatar.cc/50?img=5" />
+                        </div>
+
+                    </div>
+                    <hr class="seperator" />
+                    <div class="activity">
+                        <div class="headerContainer">
+                            <span class="header">Activity</span>
+                            <select>
+                                <option value="Today">Today</option>
+                                <option value="Tomorrow">Tomorrow</option>
+                                <option value="Toyota">Toyota</option>
+                            </select>
+                        </div>
+                        <div class="chartContainer">
+                            <canvas id="activityChart5"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="user">
+                        <div class="img"></div>
+                        <div class="nameAndStars">
+                            <div class="name">Jane Anderson</div>
+                            <div class="stars">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="options">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </div>
+                    <div class="skills">
+                        <span class="header">Skills</span>
+                        <div class="skillsContainer">
+                            <a href="#" class="skill">Crossfit</a>
+                            <a href="#" class="skill">TRX</a>
+                            <a href="#" class="skill">Yoga</a>
+                        </div>
+                    </div>
+                    <hr class="seperator" />
+                    <div class="customers">
+                        <span class="header">Customers</span>
+                        <div class="customersContainer">
+                            <img src="https://i.pravatar.cc/50?img=1" />
+                            <img src="https://i.pravatar.cc/50?img=2" />
+                            <img src="https://i.pravatar.cc/50?img=3" />
+                            <img src="https://i.pravatar.cc/50?img=4" />
+                            <img src="https://i.pravatar.cc/50?img=5" />
+                        </div>
+
+                    </div>
+                    <hr class="seperator" />
+                    <div class="activity">
+                        <div class="headerContainer">
+                            <span class="header">Activity</span>
+                            <select>
+                                <option value="Today">Today</option>
+                                <option value="Tomorrow">Tomorrow</option>
+                                <option value="Toyota">Toyota</option>
+                            </select>
+                        </div>
+                        <div class="chartContainer">
+                            <canvas id="activityChart6"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
-        <footer class="footer"></footer>
+        <footer class="admin__footer">
+            <a class="link active" href="#"><i class="fa fa-home"></i><span>Dashboard</span></a>
+            <a class="link" href="#"><i class="fa fa-calendar"></i><span>Schedule</span></a>
+            <a class="link" href="#"><i class="fas fa-chalkboard-teacher"></i><span>Trainers</span></a>
+            <a class="link" href="#"><i class="fa fa-users"></i><span>Customers</span></a>
+        </footer>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script>
+        var acc = document.getElementsByClassName("tabButton");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function(e) {
+                var target = e.target;
+                var panel = target.parentElement.getElementsByClassName('panel')[0]
+                console.log(panel);
+                panel.style.height = null;
+                console.log(target);
+            });
+        }
+    </script>
+    <script>
+        var arr = [0, 1, 1, 3, 2, 10, 7, 9, 2, 5, 3, 9, 8, 4, 3, 0];
+        var backgroundColors = [];
+        arr.forEach(v => backgroundColors.push("rgba(64, 80, 245, " + v / 10 + ")"))
+
+        var data = {
+            labels: ["06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"],
+            datasets: [{
+                label: 'A',
+                backgroundColor: backgroundColors,
+                data: arr,
+            }]
+        };
+
+        var options = {
+            responsive: true,
+            cornerRadius: 0,
+            maintainAspectRatio: false,
+            legend: {
+                display: false,
+                position: 'bottom',
+            },
+            scales: {
+                yAxes: [{
+                    display: false,
+                    gridLines: {
+                        display: false,
+                    },
+                    ticks: {
+                        maxTicksLimit: 5,
+                    }
+                }],
+                xAxes: [{
+                    display: true,
+                    barPercentage: 1,
+                    gridLines: {
+                        display: false,
+                    },
+                    ticks: {
+                        userCallback: function(item, index) {
+                            if (!(index % 3)) return item;
+                        },
+                        fontColor: '#9c9eb2'
+                    }
+                }]
+            }
+        };
+
+
+        var ctx = document.getElementById('activityChart1').getContext('2d');
+        var ctx2 = document.getElementById('activityChart2').getContext('2d');
+        var ctx3 = document.getElementById('activityChart3').getContext('2d');
+        var ctx4 = document.getElementById('activityChart4').getContext('2d');
+        var ctx5 = document.getElementById('activityChart5').getContext('2d');
+        var ctx6 = document.getElementById('activityChart6').getContext('2d');
+        var myLineChart = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: options
+        });
+        var myLineChart = new Chart(ctx2, {
+            type: 'bar',
+            data: data,
+            options: options
+        });
+        var myLineChart = new Chart(ctx3, {
+            type: 'bar',
+            data: data,
+            options: options
+        });
+        var myLineChart = new Chart(ctx4, {
+            type: 'bar',
+            data: data,
+            options: options
+        });
+        var myLineChart = new Chart(ctx5, {
+            type: 'bar',
+            data: data,
+            options: options
+        });
+        var myLineChart = new Chart(ctx6, {
+            type: 'bar',
+            data: data,
+            options: options
+        });
+    </script>
+    <script>
+        document.getElementById('closeAlert').addEventListener('click', closeAlert, {
+            once: true
+        });
+
+        function closeAlert() {
+            document.getElementsByClassName('upgradeAccount')[0].style.display = "none";
+        }
+    </script>
 </body>
 
 </html>
